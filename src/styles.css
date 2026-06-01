@@ -1,0 +1,200 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   PALET ZEN JEPANG — TIDAK BOLEH DITAMBAH
+   ============================================ */
+:root {
+  /* Warna utama */
+  --warna-gading: #F8F5F0;
+  --warna-pasir:  #E7DDD1;
+  --warna-batu:   #C8C2B8;
+  --warna-coklat: #8A7560;
+  --warna-arang:  #3A3A3A;
+  --warna-sage:   #A8B29A;
+  --warna-tanah:  #B89072;
+
+  /* Token semantik shadcn dipetakan ke palet Zen */
+  --radius: 0.25rem;
+  --background: var(--warna-gading);
+  --foreground: var(--warna-arang);
+  --card: var(--warna-gading);
+  --card-foreground: var(--warna-arang);
+  --popover: var(--warna-gading);
+  --popover-foreground: var(--warna-arang);
+  --primary: var(--warna-arang);
+  --primary-foreground: var(--warna-gading);
+  --secondary: var(--warna-pasir);
+  --secondary-foreground: var(--warna-arang);
+  --muted: var(--warna-pasir);
+  --muted-foreground: var(--warna-coklat);
+  --accent: var(--warna-sage);
+  --accent-foreground: var(--warna-arang);
+  --destructive: #B85450;
+  --destructive-foreground: var(--warna-gading);
+  --border: var(--warna-batu);
+  --input: var(--warna-batu);
+  --ring: var(--warna-coklat);
+
+  /* Tipografi */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Manrope', system-ui, sans-serif;
+
+  --ukuran-display: clamp(2.4rem, 11vw, 4.8rem);
+  --ukuran-h1:      clamp(1.75rem, 6vw, 3rem);
+  --ukuran-h2:      clamp(1.35rem, 4.5vw, 2.2rem);
+  --ukuran-body:    1rem;
+  --ukuran-kecil:   0.875rem;
+
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-gading: var(--warna-gading);
+  --color-pasir:  var(--warna-pasir);
+  --color-batu:   var(--warna-batu);
+  --color-coklat: var(--warna-coklat);
+  --color-arang:  var(--warna-arang);
+  --color-sage:   var(--warna-sage);
+  --color-tanah:  var(--warna-tanah);
+
+  --font-serif: var(--font-serif);
+  --font-sans:  var(--font-sans);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color: var(--warna-arang);
+    background-color: var(--warna-gading);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--warna-gading);
+    color: var(--warna-arang);
+    font-size: var(--ukuran-body);
+    line-height: 1.75;
+    /* Tekstur kertas nasi — noise sangat halus */
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(58,58,58,0.025) 1px, transparent 0);
+    background-size: 3px 3px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--warna-arang);
+  }
+
+  ::selection {
+    background: var(--warna-sage);
+    color: var(--warna-arang);
+  }
+}
+
+/* ============================================
+   UTILITAS ZEN
+   ============================================ */
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-sans  { font-family: var(--font-sans); }
+
+  .teks-display {
+    font-family: var(--font-serif);
+    font-size: var(--ukuran-display);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .teks-h1 { font-family: var(--font-serif); font-size: var(--ukuran-h1); font-weight: 300; line-height: 1.15; }
+  .teks-h2 { font-family: var(--font-serif); font-size: var(--ukuran-h2); font-weight: 400; line-height: 1.2; }
+
+  .teks-label {
+    font-family: var(--font-sans);
+    font-size: var(--ukuran-kecil);
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warna-coklat);
+  }
+
+  .kontainer-konten {
+    max-width: 860px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .kontainer-konten { padding-inline: 2rem; }
+  }
+
+
+  .pemisah-tipis {
+    height: 1px;
+    background-color: var(--warna-batu);
+    width: 100%;
+  }
+}
+
+/* ============================================
+   ANIMASI (durasi 0.8s - 2s)
+   ============================================ */
+@keyframes lukisLingkaran {
+  0%   { stroke-dashoffset: 880; }
+  100% { stroke-dashoffset: 120; }
+}
+
+@keyframes kuasMasuk {
+  0%   { opacity: 0; transform: scaleX(0); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+
+.animasi-lukis {
+  stroke-dasharray: 880;
+  stroke-dashoffset: 880;
+  animation: lukisLingkaran 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* Hormati preferensi pengurangan gerakan */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
